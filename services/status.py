@@ -10,8 +10,11 @@ import django,os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 django.setup()
 from crm.models import Leads_status
-
+from bot import problems
 from requests.exceptions import HTTPError
+import json,asyncio
+
+
 # Set up logger
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -39,20 +42,102 @@ class AmoCRM:
                 self.rate_limit_remaining = int(response.headers.get("X-RateLimit-Remaining", self.rate_limit_remaining))
                 self.rate_limit_reset_time = int(response.headers.get("Retry-After", 1))
                 return response.json()
+
             elif response.status_code == 204:
                 logger.info("No content returned from AmoCRM API.")
-                return None
+                message = "No content returned from AmoCRM API."
+                asyncio.run(problems(message))
+
+
             elif response.status_code == 429:  # Rate-limiting
                 self.rate_limit_reset_time = int(response.headers.get("Retry-After", 5))
                 logger.warning("Rate limit hit. Retrying after delay...")
+                message = "Rate limit hit. Retrying after delay..."
+                asyncio.run(problems(message))
                 time.sleep(self.rate_limit_reset_time)
                 return self.get_amo_data(url, headers, params)
+            elif response.status_code == 401:
+                logger.warning("Received 401 Unauthorized. Attempting to refresh token...")
+                message = "Received 401 Unauthorized. Attempting to refresh token..."
+                asyncio.run(problems(message))
+
+                new_access_token = self.refresh_tokens()  # Refresh token and get the new one
+                if new_access_token:
+                    self.access_token = new_access_token  # Update the token in the class instance
+                    headers['Authorization'] = f'Bearer {self.access_token}'  # Update headers
+                    return self.get_amo_data(url, headers, params)  # Retry the request with the new token
+                else:
+                    logger.error("Failed to refresh the token. Aborting request.")
+                    asyncio.run(problems("The refresh token is invalid, expired, or revoked. Please re-authenticate.Or please click /tokens.You have 10 minutes"))
+                    time.sleep(600)
+                    self.get_tokens()
             else:
                 logger.error(f"Failed to get data from AmoCRM: {response.status_code}, {response.text}")
                 return None
         except requests.RequestException as e:
             logger.error(f"An error occurred while making the API request: {e}")
             return None
+
+    def get_tokens(self):
+        url = f"https://{AMOCRM_SUBDOMAIN}.amocrm.ru/oauth2/access_token"
+        with open("tokens_file.json", mode="r") as json_file:
+            tokens_data = json.load(json_file)
+        data = {
+            "client_id": tokens_data.get("client_id"),  # Fetching from loaded JSON
+            "client_secret": tokens_data.get("client_secret"),  # Fetching from loaded JSON
+            "grant_type": "authorization_code",
+            "code": tokens_data.get("code"),  # Fetching from loaded JSON
+            "redirect_uri": tokens_data.get("redirect_uri")  # Fetching from loaded JSON
+        }
+        headers = {
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+
+        response = requests.post(url, headers=headers, data=data)
+
+        if response.status_code == 200:
+            tokens = response.json()
+            with open("access_token.txt", "w") as access_file:
+                access_file.write(tokens['access_token'])
+
+            with open("refresh_token.txt", "w") as refresh_file:
+                refresh_file.write(tokens['refresh_token'])
+            print("Tokens obtained successfully:", tokens)
+            asyncio.run(problems("Successfully created access and refresh tokens☺️"))
+        else:
+            print(f"Failed to obtain tokens: {response.status_code}, {response.text}")
+
+    def refresh_tokens(self):
+        url = f"https://{AMOCRM_SUBDOMAIN}.amocrm.ru/oauth2/access_token"
+        with open("tokens_file.json", mode="r") as json_file:
+            tokens_data = json.load(json_file)
+
+        with open("refresh_token.txt", "r") as refresh_file:
+            refresh_token = refresh_file.read().strip()
+
+        data = {
+            "client_id": tokens_data.get("client_id"),
+            "client_secret": tokens_data.get("client_secret"),
+            "grant_type": "refresh_token",
+            "refresh_token": refresh_token,
+            "redirect_uri": tokens_data.get("redirect_uri"),
+        }
+        headers = {
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+
+        response = requests.post(url, headers=headers, data=data)
+
+        if response.status_code == 200:
+            tokens = response.json()
+            with open("access_token.txt", "w") as access_file:
+                access_file.write(tokens['access_token'])
+
+            with open("refresh_token.txt", "w") as refresh_file:
+                refresh_file.write(tokens['refresh_token'])
+            print("Tokens refreshed successfully:", tokens)
+            asyncio.run(problems("Successfully refreshed access and refresh tokens☺️"))
+            return tokens['access_token']
 
     def get_all_leads(self, endpoint, params=None):
         # Define the key mapping for column renaming
@@ -233,19 +318,23 @@ class SaveModel:
 
         except Exception as e:
             logger.error(f"Error processing leads: {e}")
+            message = f"Error processing leads: {e}"
+            asyncio.run(problems(message))
         finally:
             logger.info(f"Processing complete. Time taken: {time.time() - start_time:.2f} seconds.")
 
     def bulk_create_leads(self, leads_to_create):
         Leads_status.objects.bulk_create(leads_to_create, batch_size=100)
         logger.info(f"Created {len(leads_to_create)} leads.")
-
+        message = f"Created {len(leads_to_create)} leads."
+        asyncio.run(problems(message))
     def bulk_update_leads(self, leads_to_update):
         Leads_status.objects.bulk_update(leads_to_update, fields=[
             'status', 'price', 'lead_name', 'responsible_user', 'created_by', 'group', 'pipeline', 'last_time_sync'
         ], batch_size=100)
         logger.info(f"Updated {len(leads_to_update)} leads.")
-
+        message = f"Updated {len(leads_to_update)} leads."
+        asyncio.run(problems(message))
 
 
 def fetch_and_process_data(page_number):
@@ -285,7 +374,8 @@ if __name__ == "__main__":
         except HTTPError as e:
             if e.response.status_code == 404:
                 logger.info(f"Page {page_number} returned 404. Moving to the next page.")
-                page_number += 1  # Go to the next page even if it's 404
+                page_number += 1
+
             else:
                 logger.error(f"HTTP error occurred: {e}")
         except KeyboardInterrupt:

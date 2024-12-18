@@ -82,7 +82,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '',  # Replace with your database name
+        'USER': '',  # Replace with your PostgreSQL username
+        'PASSWORD': '',  # Replace with your password
+        'HOST': '',  # Or the host where PostgreSQL is running
+        'PORT': '',  # Default PostgreSQL port
+    }
+}
 
 
 # Password validation
