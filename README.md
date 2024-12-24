@@ -30,6 +30,12 @@ python status.py
 ```
 
 <h3><i>In conclusion:this project get real-time statuses of leads in your amocrm account.Also you can change your access tokens via bot.The bot give information about leads added or not</i></h3>
+<<<<<<< HEAD
 # The result in db
 
 ![img_1.png](img_1.png)
+=======
+## The result in db
+
+![img_1.png](img_1.png)
+>>>>>>> 8766a126495e995f82a67573b414b168899e91b1
