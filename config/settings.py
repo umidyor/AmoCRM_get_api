@@ -85,8 +85,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mydatabase',  # Replace with your database name
-        'USER': 'mypostgres',  # Replace with your PostgreSQL username
+        'NAME': 'amocrm_db',  # Replace with your database name
+        'USER': 'umidyor',  # Replace with your PostgreSQL username
         'PASSWORD': '2004postgres',  # Replace with your password
         'HOST': '144.126.157.79',  # Or the host where PostgreSQL is running
         'PORT': '5432',  # Default PostgreSQL port
