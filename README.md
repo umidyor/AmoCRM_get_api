@@ -38,4 +38,4 @@ python status.py
 ## The result in db
 
 ![img_1.png](img_1.png)
->>>>>>> 8766a126495e995f82a67573b414b168899e91b1
+
