@@ -76,22 +76,22 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mydatabase',  # Replace with your database name
-        'USER': 'mypostgres',  # Replace with your PostgreSQL username
-        'PASSWORD': '2004postgres',  # Replace with your password
-        'HOST': '144.126.157.79',  # Or the host where PostgreSQL is running
-        'PORT': '5432',  # Default PostgreSQL port
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'amocrm_db',  # Replace with your database name
+#         'USER': 'umidyor',  # Replace with your PostgreSQL username
+#         'PASSWORD': '2004postgres',  # Replace with your password
+#         'HOST': '144.126.157.79',  # Or the host where PostgreSQL is running
+#         'PORT': '5432',  # Default PostgreSQL port
+#     }
+# }
 
 
 

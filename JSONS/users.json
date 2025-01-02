@@ -1,0 +1,1866 @@
+[
+    {
+        "_total_items": 10,
+        "_page": 1,
+        "_page_count": 1,
+        "_links": {
+            "self": {
+                "href": "https://pixeltechuz.amocrm.ru/api/v4/users/?page=1&limit=250"
+            }
+        },
+        "_embedded": {
+            "users": [
+                {
+                    "id": 8319985,
+                    "name": "Pixel Tech",
+                    "email": "oqqora069005@gmail.com",
+                    "lang": "ru",
+                    "rights": {
+                        "leads": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "A",
+                            "export": "A"
+                        },
+                        "contacts": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "A",
+                            "export": "A"
+                        },
+                        "companies": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "A",
+                            "export": "A"
+                        },
+                        "tasks": {
+                            "edit": "A",
+                            "delete": "A"
+                        },
+                        "mail_access": true,
+                        "catalog_access": true,
+                        "files_access": true,
+                        "status_rights": [
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5541622,
+                                "status_id": 48968959,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5641315,
+                                "status_id": 49693018,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7425546,
+                                "status_id": 61682586,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7900102,
+                                "status_id": 64946914,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8223186,
+                                "status_id": 67157578,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8421702,
+                                "status_id": 68539738,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8616070,
+                                "status_id": 69890814,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8623190,
+                                "status_id": 69940746,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8687698,
+                                "status_id": 70393406,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8688434,
+                                "status_id": 70398858,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8704670,
+                                "status_id": 70511214,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            }
+                        ],
+                        "catalog_rights": [
+                            {
+                                "catalog_id": 7013,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8297,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8299,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            }
+                        ],
+                        "custom_fields_rights": null,
+                        "oper_day_reports_view_access": true,
+                        "oper_day_user_tracking": false,
+                        "is_admin": true,
+                        "is_free": false,
+                        "is_active": true,
+                        "group_id": null,
+                        "role_id": null
+                    },
+                    "_links": {
+                        "self": {
+                            "href": "https://pixeltechuz.amocrm.ru/api/v4/users/8319985/?page=1&limit=250"
+                        }
+                    }
+                },
+                {
+                    "id": 8320066,
+                    "name": "Ibrohim",
+                    "email": "pixeltechuz@gmail.com",
+                    "lang": "ru",
+                    "rights": {
+                        "leads": {
+                            "view": "M",
+                            "edit": "M",
+                            "add": "A",
+                            "delete": "M",
+                            "export": "D"
+                        },
+                        "contacts": {
+                            "view": "A",
+                            "edit": "M",
+                            "add": "A",
+                            "delete": "M",
+                            "export": "D"
+                        },
+                        "companies": {
+                            "view": "M",
+                            "edit": "M",
+                            "add": "A",
+                            "delete": "M",
+                            "export": "D"
+                        },
+                        "tasks": {
+                            "edit": "M",
+                            "delete": "M"
+                        },
+                        "mail_access": false,
+                        "catalog_access": false,
+                        "files_access": false,
+                        "status_rights": [
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5541622,
+                                "status_id": 48968959,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5641315,
+                                "status_id": 49693018,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7425546,
+                                "status_id": 61682586,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7900102,
+                                "status_id": 64946914,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8223186,
+                                "status_id": 67157578,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8421702,
+                                "status_id": 68539738,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8616070,
+                                "status_id": 69890814,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8623190,
+                                "status_id": 69940746,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8687698,
+                                "status_id": 70393406,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8688434,
+                                "status_id": 70398858,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8704670,
+                                "status_id": 70511214,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            }
+                        ],
+                        "catalog_rights": [
+                            {
+                                "catalog_id": 7013,
+                                "rights": {
+                                    "add": "D",
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D",
+                                    "export": "D"
+                                }
+                            },
+                            {
+                                "catalog_id": 8297,
+                                "rights": {
+                                    "add": "D",
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D",
+                                    "export": "D"
+                                }
+                            },
+                            {
+                                "catalog_id": 8299,
+                                "rights": {
+                                    "add": "D",
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D",
+                                    "export": "D"
+                                }
+                            }
+                        ],
+                        "custom_fields_rights": null,
+                        "oper_day_reports_view_access": false,
+                        "oper_day_user_tracking": false,
+                        "is_admin": false,
+                        "is_free": false,
+                        "is_active": true,
+                        "group_id": null,
+                        "role_id": 917938
+                    },
+                    "_links": {
+                        "self": {
+                            "href": "https://pixeltechuz.amocrm.ru/api/v4/users/8320066/?page=1&limit=250"
+                        }
+                    }
+                },
+                {
+                    "id": 10395550,
+                    "name": "Shahnoza",
+                    "email": "azizamurodmanager@gmail.com",
+                    "lang": "ru",
+                    "rights": {
+                        "leads": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "contacts": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "companies": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "tasks": {
+                            "edit": "A",
+                            "delete": "A"
+                        },
+                        "mail_access": false,
+                        "catalog_access": false,
+                        "files_access": false,
+                        "status_rights": [
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5541622,
+                                "status_id": 48968959,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5641315,
+                                "status_id": 49693018,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7425546,
+                                "status_id": 61682586,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7900102,
+                                "status_id": 64946914,
+                                "rights": {
+                                    "view": "D",
+                                    "edit": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8223186,
+                                "status_id": 67157578,
+                                "rights": {
+                                    "view": "D",
+                                    "edit": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8421702,
+                                "status_id": 68539738,
+                                "rights": {
+                                    "view": "D",
+                                    "edit": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8616070,
+                                "status_id": 69890814,
+                                "rights": {
+                                    "view": "D",
+                                    "edit": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8623190,
+                                "status_id": 69940746,
+                                "rights": {
+                                    "view": "D",
+                                    "edit": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8687698,
+                                "status_id": 70393406,
+                                "rights": {
+                                    "view": "D",
+                                    "edit": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8688434,
+                                "status_id": 70398858,
+                                "rights": {
+                                    "view": "D",
+                                    "edit": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8704670,
+                                "status_id": 70511214,
+                                "rights": {
+                                    "view": "D",
+                                    "edit": "D",
+                                    "delete": "D"
+                                }
+                            }
+                        ],
+                        "catalog_rights": [
+                            {
+                                "catalog_id": 7013,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8297,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8299,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            }
+                        ],
+                        "custom_fields_rights": null,
+                        "oper_day_reports_view_access": false,
+                        "oper_day_user_tracking": false,
+                        "is_admin": false,
+                        "is_free": false,
+                        "is_active": false,
+                        "group_id": null,
+                        "role_id": null
+                    },
+                    "_links": {
+                        "self": {
+                            "href": "https://pixeltechuz.amocrm.ru/api/v4/users/10395550/?page=1&limit=250"
+                        }
+                    }
+                },
+                {
+                    "id": 11580042,
+                    "name": "Laziz",
+                    "email": "lazizish1@gmail.com",
+                    "lang": "en",
+                    "rights": {
+                        "leads": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "A",
+                            "export": "A"
+                        },
+                        "contacts": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "A",
+                            "export": "A"
+                        },
+                        "companies": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "A",
+                            "export": "A"
+                        },
+                        "tasks": {
+                            "edit": "A",
+                            "delete": "A"
+                        },
+                        "mail_access": true,
+                        "catalog_access": true,
+                        "files_access": true,
+                        "status_rights": [
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5541622,
+                                "status_id": 48968959,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8623190,
+                                "status_id": 69940746,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7900102,
+                                "status_id": 64946914,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8223186,
+                                "status_id": 67157578,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7425546,
+                                "status_id": 61682586,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8616070,
+                                "status_id": 69890814,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8421702,
+                                "status_id": 68539738,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8687698,
+                                "status_id": 70393406,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8688434,
+                                "status_id": 70398858,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5641315,
+                                "status_id": 49693018,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8704670,
+                                "status_id": 70511214,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            }
+                        ],
+                        "catalog_rights": [
+                            {
+                                "catalog_id": 7013,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8297,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8299,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            }
+                        ],
+                        "custom_fields_rights": null,
+                        "oper_day_reports_view_access": true,
+                        "oper_day_user_tracking": false,
+                        "is_admin": true,
+                        "is_free": false,
+                        "is_active": true,
+                        "group_id": null,
+                        "role_id": null
+                    },
+                    "_links": {
+                        "self": {
+                            "href": "https://pixeltechuz.amocrm.ru/api/v4/users/11580042/?page=1&limit=250"
+                        }
+                    }
+                },
+                {
+                    "id": 11597338,
+                    "name": "Hojiakabar",
+                    "email": "uhojijr@gmail.com",
+                    "lang": "ru",
+                    "rights": {
+                        "leads": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "contacts": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "companies": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "tasks": {
+                            "edit": "A",
+                            "delete": "A"
+                        },
+                        "mail_access": false,
+                        "catalog_access": false,
+                        "files_access": false,
+                        "status_rights": [
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5541622,
+                                "status_id": 48968959,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5641315,
+                                "status_id": 49693018,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7425546,
+                                "status_id": 61682586,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7900102,
+                                "status_id": 64946914,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8223186,
+                                "status_id": 67157578,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8421702,
+                                "status_id": 68539738,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8616070,
+                                "status_id": 69890814,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8623190,
+                                "status_id": 69940746,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8687698,
+                                "status_id": 70393406,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8688434,
+                                "status_id": 70398858,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8704670,
+                                "status_id": 70511214,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "D"
+                                }
+                            }
+                        ],
+                        "catalog_rights": [
+                            {
+                                "catalog_id": 7013,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "D"
+                                }
+                            },
+                            {
+                                "catalog_id": 8297,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "D"
+                                }
+                            },
+                            {
+                                "catalog_id": 8299,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "D"
+                                }
+                            }
+                        ],
+                        "custom_fields_rights": null,
+                        "oper_day_reports_view_access": false,
+                        "oper_day_user_tracking": false,
+                        "is_admin": false,
+                        "is_free": false,
+                        "is_active": false,
+                        "group_id": null,
+                        "role_id": 897998
+                    },
+                    "_links": {
+                        "self": {
+                            "href": "https://pixeltechuz.amocrm.ru/api/v4/users/11597338/?page=1&limit=250"
+                        }
+                    }
+                },
+                {
+                    "id": 11659814,
+                    "name": "Latofat-Call 1",
+                    "email": "pixeltechcall1x@gmail.com",
+                    "lang": "ru",
+                    "rights": {
+                        "leads": {
+                            "view": "M",
+                            "edit": "M",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "contacts": {
+                            "view": "M",
+                            "edit": "M",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "companies": {
+                            "view": "M",
+                            "edit": "M",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "tasks": {
+                            "edit": "M",
+                            "delete": "D"
+                        },
+                        "mail_access": false,
+                        "catalog_access": false,
+                        "files_access": false,
+                        "status_rights": [
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5541622,
+                                "status_id": 48968959,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5641315,
+                                "status_id": 49693018,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7425546,
+                                "status_id": 61682586,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7900102,
+                                "status_id": 64946914,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8223186,
+                                "status_id": 67157578,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8421702,
+                                "status_id": 68539738,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8687698,
+                                "status_id": 70393406,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "D"
+                                }
+                            }
+                        ],
+                        "catalog_rights": [
+                            {
+                                "catalog_id": 7013,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "L",
+                                    "view": "A",
+                                    "delete": "D",
+                                    "export": "D"
+                                }
+                            },
+                            {
+                                "catalog_id": 8297,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8299,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            }
+                        ],
+                        "custom_fields_rights": null,
+                        "oper_day_reports_view_access": true,
+                        "oper_day_user_tracking": true,
+                        "is_admin": false,
+                        "is_free": false,
+                        "is_active": true,
+                        "group_id": null,
+                        "role_id": 881346
+                    },
+                    "_links": {
+                        "self": {
+                            "href": "https://pixeltechuz.amocrm.ru/api/v4/users/11659814/?page=1&limit=250"
+                        }
+                    }
+                },
+                {
+                    "id": 11659822,
+                    "name": "Call 2 Madinabonu",
+                    "email": "pixeltechcall2x@gmail.com",
+                    "lang": "ru",
+                    "rights": {
+                        "leads": {
+                            "view": "M",
+                            "edit": "M",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "contacts": {
+                            "view": "M",
+                            "edit": "M",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "companies": {
+                            "view": "M",
+                            "edit": "M",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "tasks": {
+                            "edit": "M",
+                            "delete": "D"
+                        },
+                        "mail_access": false,
+                        "catalog_access": false,
+                        "files_access": false,
+                        "status_rights": [
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5541622,
+                                "status_id": 48968959,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5641315,
+                                "status_id": 49693018,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7425546,
+                                "status_id": 61682586,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7900102,
+                                "status_id": 64946914,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8223186,
+                                "status_id": 67157578,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8421702,
+                                "status_id": 68539738,
+                                "rights": {
+                                    "edit": "D",
+                                    "view": "D",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8687698,
+                                "status_id": 70393406,
+                                "rights": {
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "D"
+                                }
+                            }
+                        ],
+                        "catalog_rights": [
+                            {
+                                "catalog_id": 7013,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "L",
+                                    "view": "A",
+                                    "delete": "D",
+                                    "export": "D"
+                                }
+                            },
+                            {
+                                "catalog_id": 8297,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8299,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            }
+                        ],
+                        "custom_fields_rights": null,
+                        "oper_day_reports_view_access": true,
+                        "oper_day_user_tracking": true,
+                        "is_admin": false,
+                        "is_free": false,
+                        "is_active": true,
+                        "group_id": null,
+                        "role_id": 881346
+                    },
+                    "_links": {
+                        "self": {
+                            "href": "https://pixeltechuz.amocrm.ru/api/v4/users/11659822/?page=1&limit=250"
+                        }
+                    }
+                },
+                {
+                    "id": 11692282,
+                    "name": "Nurbek",
+                    "email": "nurbek111@gmail.com",
+                    "lang": "ru",
+                    "rights": {
+                        "leads": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "A",
+                            "export": "A"
+                        },
+                        "contacts": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "A",
+                            "export": "A"
+                        },
+                        "companies": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "A",
+                            "export": "A"
+                        },
+                        "tasks": {
+                            "edit": "A",
+                            "delete": "A"
+                        },
+                        "mail_access": true,
+                        "catalog_access": true,
+                        "files_access": true,
+                        "status_rights": [
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5541622,
+                                "status_id": 48968959,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8688434,
+                                "status_id": 70398858,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8421702,
+                                "status_id": 68539738,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7900102,
+                                "status_id": 64946914,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8616070,
+                                "status_id": 69890814,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8223186,
+                                "status_id": 67157578,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8687698,
+                                "status_id": 70393406,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7425546,
+                                "status_id": 61682586,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8623190,
+                                "status_id": 69940746,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8704670,
+                                "status_id": 70511214,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5641315,
+                                "status_id": 49693018,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            }
+                        ],
+                        "catalog_rights": [
+                            {
+                                "catalog_id": 7013,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8297,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8299,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            }
+                        ],
+                        "custom_fields_rights": null,
+                        "oper_day_reports_view_access": true,
+                        "oper_day_user_tracking": false,
+                        "is_admin": true,
+                        "is_free": false,
+                        "is_active": true,
+                        "group_id": null,
+                        "role_id": null
+                    },
+                    "_links": {
+                        "self": {
+                            "href": "https://pixeltechuz.amocrm.ru/api/v4/users/11692282/?page=1&limit=250"
+                        }
+                    }
+                },
+                {
+                    "id": 11796954,
+                    "name": "Yusufxon",
+                    "email": "pixeltechyusufxon1@gmail.com",
+                    "lang": "ru",
+                    "rights": {
+                        "leads": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "contacts": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "companies": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "tasks": {
+                            "edit": "A",
+                            "delete": "A"
+                        },
+                        "mail_access": false,
+                        "catalog_access": false,
+                        "files_access": false,
+                        "status_rights": [
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5541622,
+                                "status_id": 48968959,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5641315,
+                                "status_id": 49693018,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7425546,
+                                "status_id": 61682586,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7900102,
+                                "status_id": 64946914,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8223186,
+                                "status_id": 67157578,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8421702,
+                                "status_id": 68539738,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8616070,
+                                "status_id": 69890814,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8623190,
+                                "status_id": 69940746,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8687698,
+                                "status_id": 70393406,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8688434,
+                                "status_id": 70398858,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8704670,
+                                "status_id": 70511214,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            }
+                        ],
+                        "catalog_rights": [
+                            {
+                                "catalog_id": 7013,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8297,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8299,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            }
+                        ],
+                        "custom_fields_rights": null,
+                        "oper_day_reports_view_access": false,
+                        "oper_day_user_tracking": false,
+                        "is_admin": false,
+                        "is_free": false,
+                        "is_active": true,
+                        "group_id": null,
+                        "role_id": null
+                    },
+                    "_links": {
+                        "self": {
+                            "href": "https://pixeltechuz.amocrm.ru/api/v4/users/11796954/?page=1&limit=250"
+                        }
+                    }
+                },
+                {
+                    "id": 11920870,
+                    "name": "Zokir",
+                    "email": "pixelzokir@gmail.com",
+                    "lang": "ru",
+                    "rights": {
+                        "leads": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "contacts": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "companies": {
+                            "view": "A",
+                            "edit": "A",
+                            "add": "A",
+                            "delete": "D",
+                            "export": "D"
+                        },
+                        "tasks": {
+                            "edit": "A",
+                            "delete": "A"
+                        },
+                        "mail_access": false,
+                        "catalog_access": false,
+                        "files_access": false,
+                        "status_rights": [
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5541622,
+                                "status_id": 48968959,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5641315,
+                                "status_id": 49693018,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7425546,
+                                "status_id": 61682586,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7900102,
+                                "status_id": 64946914,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8223186,
+                                "status_id": 67157578,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8421702,
+                                "status_id": 68539738,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8616070,
+                                "status_id": 69890814,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8623190,
+                                "status_id": 69940746,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8687698,
+                                "status_id": 70393406,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8688434,
+                                "status_id": 70398858,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "D"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8704670,
+                                "status_id": 70511214,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "D"
+                                }
+                            }
+                        ],
+                        "catalog_rights": [
+                            {
+                                "catalog_id": 7013,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8297,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            },
+                            {
+                                "catalog_id": 8299,
+                                "rights": {
+                                    "add": "A",
+                                    "edit": "A",
+                                    "view": "A",
+                                    "delete": "A",
+                                    "export": "A"
+                                }
+                            }
+                        ],
+                        "custom_fields_rights": null,
+                        "oper_day_reports_view_access": false,
+                        "oper_day_user_tracking": false,
+                        "is_admin": false,
+                        "is_free": false,
+                        "is_active": true,
+                        "group_id": null,
+                        "role_id": null
+                    },
+                    "_links": {
+                        "self": {
+                            "href": "https://pixeltechuz.amocrm.ru/api/v4/users/11920870/?page=1&limit=250"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+]
