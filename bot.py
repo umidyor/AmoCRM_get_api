@@ -24,7 +24,7 @@ async def problems(message: str):
 
     for admin_id in ADMINS:
         try:
-            await bot.send_message(chat_id=admin_id, text=message)
+            await bot.send_message(chat_id=admin_id, text=message,parse_mode="Markdown")
         except Exception as e:
             print(f"Failed to send message to admin {admin_id}: {e}")
 # Helper function to set commands

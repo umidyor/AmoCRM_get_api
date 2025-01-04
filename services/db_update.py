@@ -1,6 +1,4 @@
-import psycopg2
-from psycopg2.extras import RealDictCursor
-from env import AMOCRM_SUBDOMAIN,ACCESS_TOKEN,API_URL
+
 import os,requests,time,datetime
 import django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
@@ -36,22 +34,22 @@ from crm.models import Lead
 #         if connection:
 #             connection.close()
 
-from django.db.models import Min
-
+# from django.db.models import Min
 #
-duplicates = (
-    Lead.objects.values('lead_id')
-    .annotate(min_id=Min('id'))
-    .values_list('lead_id', 'min_id')
-)
-
-# Get all IDs except the ones to retain
-ids_to_retain = [item[1] for item in duplicates]
-duplicates_to_delete = Lead.objects.exclude(id__in=ids_to_retain)
-
-# Delete duplicates
-duplicates_to_delete.delete()
-print(f"Removed {duplicates_to_delete.count()} duplicate entries.")
+# #
+# duplicates = (
+#     Lead.objects.values('lead_id')
+#     .annotate(min_id=Min('id'))
+#     .values_list('lead_id', 'min_id')
+# )
+#
+# # Get all IDs except the ones to retain
+# ids_to_retain = [item[1] for item in duplicates]
+# duplicates_to_delete = Lead.objects.exclude(id__in=ids_to_retain)
+#
+# # Delete duplicates
+# duplicates_to_delete.delete()
+# print(f"Removed {duplicates_to_delete.count()} duplicate entries.")
 
 # from django.utils.timezone import make_aware
 # from datetime import datetime
@@ -64,3 +62,7 @@ print(f"Removed {duplicates_to_delete.count()} duplicate entries.")
 #
 # print("Records with last_time_sync not equal to 2024-12-02 09:39:42 have been deleted.")
 
+from datetime import datetime
+s=datetime.fromtimestamp(1704105600)
+print(s)
+print(s.isoformat())

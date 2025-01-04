@@ -15,7 +15,6 @@ from django.db import models
 
 from django.utils import timezone
 from datetime import datetime
-
 # Utility function to convert Unix timestamp to datetime
 def unix_to_datetime(unix_timestamp):
     return datetime.fromtimestamp(unix_timestamp)
@@ -53,59 +52,43 @@ class Lead(models.Model):
     pipeline = models.ForeignKey(Pipeline, on_delete=models.CASCADE)
     status = models.ForeignKey(Status, on_delete=models.CASCADE)
     is_deleted = models.BooleanField(default=False)
-
-    # Use datetime fields instead of Unix timestamps
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
-    closed_at = models.DateTimeField(null=True, blank=True)
-    change_time_status=models.DateTimeField(null=True)
+    created_at = models.DateTimeField(null=True)
+    updated_at = models.DateTimeField(null=True)
+    closed_at = models.DateTimeField(null=True)
+    lead_active_time=models.CharField(max_length=255)
+    change_time_status=models.DateTimeField(default=datetime(1111, 1, 1, 00, 00, 0),null=True, blank=True)
     def __str__(self):
         return self.lead_id
 
-    def update_status_and_pipeline(self, new_status, new_pipeline,change_time_status):
-        """
-        Updates the lead's status and pipeline, and creates a history record
-        for the change.
-        """
-
-        old_status = self.status
-        old_pipeline = self.pipeline
-        old_status_time = self.change_time_status
-
-        self.status = new_status
-        self.pipeline = new_pipeline
-        self.change_time_status = change_time_status
-        self.save()
-
-        # Create a history entry for the change
-        Lead_history.objects.create(
-            lead_id=self,
-            old_status=old_status,
-            old_status_time=old_status_time,
-            new_status=self.status,
-            new_status_time=self.change_time_status,
-            total_time_status=self.calculate_status_duration(old_status_time, self.change_time_status),
-            old_pipeline=old_pipeline,
-            new_pipeline=self.pipeline,
-        )
-
     def calculate_status_duration(self, old_status_time, new_status_time):
-        """
-        Calculate the duration for which the status was active.
-        """
         if old_status_time and new_status_time:
-            duration = new_status_time - old_status_time  # Calculate the time difference
-            return duration.total_seconds()  # Return the total time in seconds
-        return 0  # Return 0 if no previous status time exists
+            if isinstance(old_status_time, str):
+                old_status_time = datetime.fromisoformat(old_status_time)
+            if isinstance(new_status_time, str):
+                new_status_time = datetime.fromisoformat(new_status_time)
+
+            # Calculate the duration in seconds
+            duration = new_status_time - old_status_time
+            total_seconds = duration.total_seconds()
+
+            # Convert total seconds to days, hours, minutes, and seconds
+            days = total_seconds // (24 * 3600)
+            hours = (total_seconds % (24 * 3600)) // 3600
+            minutes = (total_seconds % 3600) // 60
+            seconds = total_seconds % 60
+
+            # Return a tuple (days, hours, minutes, seconds)
+            return f"Days:{days} Hours:{hours}, Minutes:{minutes}, Seconds:{seconds}"
+        return 0
 
 
 class Lead_history(models.Model):
     lead_id=models.ForeignKey(Lead,on_delete=models.CASCADE,null=True)
     old_status = models.ForeignKey(Status, on_delete=models.CASCADE, related_name='old_status')
-    old_status_time = models.DateTimeField(null=True,blank=True)
+    old_status_time = models.DateTimeField()
     new_status = models.ForeignKey(Status, on_delete=models.CASCADE, related_name='new_status')
-    new_status_time = models.DateTimeField(null=True,blank=True)
-    total_time_status=models.DateTimeField()
+    new_status_time = models.DateTimeField()
+    total_time_status=models.CharField(max_length=500)
     old_pipeline = models.ForeignKey(Pipeline, on_delete=models.CASCADE, related_name='old_pipeline')
     new_pipeline = models.ForeignKey(Pipeline, on_delete=models.CASCADE, related_name='new_pipeline')
 

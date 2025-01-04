@@ -78,17 +78,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-<<<<<<< HEAD
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-=======
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'amocrm_db',  # Replace with your database name
-        'USER': 'umidyor',  # Replace with your PostgreSQL username
-        'PASSWORD': '2004postgres',  # Replace with your password
-        'HOST': '144.126.157.79',  # Or the host where PostgreSQL is running
-        'PORT': '5432',  # Default PostgreSQL port
->>>>>>> c83c62b23e441169bea9a2a406b86771e5f59203
     }
 }
 # DATABASES = {
@@ -132,7 +123,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

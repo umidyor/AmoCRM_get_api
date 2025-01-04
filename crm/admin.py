@@ -4,7 +4,7 @@ from .models import *
 @admin.register(Lead)
 class AdminLead(admin.ModelAdmin):
     list_display=['lead_id','name','pipeline','status']
-    search_fields=['name','pk']
+    search_fields=['name','pk','lead_id']
 
 
 admin.site.register(Crm_users)

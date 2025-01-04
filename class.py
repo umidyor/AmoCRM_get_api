@@ -53,6 +53,7 @@ class LeadProcessor:
                 print("Tokens obtained successfully:", tokens)
             else:
                 print(f"Failed to obtain tokens: {response.status_code}, {response.text}")
+                await problems(f"Failed to obtain tokens: {response.status_code}, {response.text}")
         except json.JSONDecodeError:
             print("Error: Could not read tokens_file.json. Ensure it has valid content.")
         except Exception as e:
@@ -93,7 +94,9 @@ class LeadProcessor:
                         return True
                     else:
                         print(f"Failed to refresh token: {response.status}, {await response.text()}")
-                        await problems(f"Failed to refresh token: {response.status}, {await response.text()}")
+                        asyncio.run(problems("The refresh token is invalid, expired, or revoked. Please re-authenticate.Or please click /tokens.You have 10 minutes"))
+                        await asyncio.sleep(600)
+                        await self.get_tokens()
                         return False
 
 
@@ -369,29 +372,21 @@ class LeadProcessor:
     async def get_all_data(self):
         start_time = time.time()
         print(f"Overall Start Time: {datetime.fromtimestamp(start_time).strftime('%Y-%m-%d %H:%M:%S')}")
-        #
         await self.fetch_all_and_save("leads", "leads")
-        await asyncio.sleep(5)  # Await sleep in an async function
-
+        await asyncio.sleep(5)
         await self.fetch_all_and_save("users", "users")
         await asyncio.sleep(5)
-
         await self.fetch_all_and_save("pipelines", "leads/pipelines")
-
-
-
         await self.get_all_leads()
 
         end_time = time.time()
-        print(
-            f"Overall End Time: {datetime.fromtimestamp(end_time).strftime('%Y-%m-%d %H:%M:%S')} - Total Time Taken: {end_time - start_time:.2f} seconds")
+        print(f"Overall End Time: {datetime.fromtimestamp(end_time).strftime('%Y-%m-%d %H:%M:%S')} - Total Time Taken: {end_time - start_time:.2f} seconds")
 from django.utils import timezone
 import warnings
 
 warnings.filterwarnings("ignore")
 from asgiref.sync import sync_to_async
 import time
-from concurrent.futures import ThreadPoolExecutor
 class Save_model(LeadProcessor):
 
     def __init__(self):
@@ -634,7 +629,7 @@ class Save_model(LeadProcessor):
     #         ])
     #         print(f"Total leads updated: {len(updated_leads)}")
     async def save_leads_to_model(self, leads_data):
-        print(f"Leads data length: {len(leads_data)}")  # Check the length of leads_data
+        print(f"Leads data length: {len(leads_data)}")  # Debugging log
 
         # Get all existing lead_ids efficiently
         existing_leads = set(
@@ -648,32 +643,34 @@ class Save_model(LeadProcessor):
 
         async def process_lead(lead_data):
             try:
-                print(f"Processing Lead: {lead_data['id']}")  # Check that the lead is being processed
+                print(f"Processing Lead: {lead_data['id']}")  # Debugging log
                 responsible_user = await sync_to_async(Crm_users.objects.get)(user_id=lead_data["responsible_user_id"])
                 pipeline = await sync_to_async(Pipeline.objects.get)(pipeline_id=lead_data["pipeline_id"])
                 status = await sync_to_async(Status.objects.get)(pipeline=pipeline, status_id=lead_data["status_id"])
 
-                lead_id =str(lead_data["id"])
-                print(f"Checking if Lead ID exists in existing_leads: {lead_id in existing_leads}")  # Debug check
+                lead_id = str(lead_data["id"])
+                print(f"Checking if Lead ID exists in existing_leads: {lead_id in existing_leads}")  # Debugging log
 
                 if lead_id in existing_leads:
                     try:
                         lead_obj = await sync_to_async(Lead.objects.get)(lead_id=lead_id)
-                        print(f"Updating lead {lead_id}")
+                        await sync_to_async(self.savehistory)(lead_data,lead_obj)
+                        # Update lead object fields
                         lead_obj.name = lead_data["name"]
                         lead_obj.price = lead_data["price"] or 0
                         lead_obj.responsible_user = responsible_user
                         lead_obj.pipeline = pipeline
                         lead_obj.status = status
                         lead_obj.is_deleted = lead_data["is_deleted"]
-                        lead_obj.updated_at = lead_data['updated_at']
-                        lead_obj.closed_at = lead_data['closed_at']
-                        lead_obj.change_time_status = lead_data['status_time']
+                        lead_obj.updated_at = lead_data["updated_at"]
+                        lead_obj.closed_at = lead_data["closed_at"]
+                        lead_obj.change_time_status = lead_data["status_time"]
+                        if lead_data["closed_at"]:
+                            lead_obj.lead_active_time = lead_obj.calculate_status_duration(lead_obj.created_at,lead_obj.closed_at)
+                            print("Active time", lead_obj.calculate_status_duration(lead_obj.created_at,lead_obj.closed_at))
+
 
                         updated_leads.append(lead_obj)
-
-
-
                     except Lead.DoesNotExist:
                         print(f"Lead {lead_id} not found for update.")
                 else:
@@ -686,18 +683,21 @@ class Save_model(LeadProcessor):
                         pipeline=pipeline,
                         status=status,
                         is_deleted=lead_data["is_deleted"],
-                        created_at=lead_data['created_at'],
-                        updated_at=lead_data['updated_at'],
-                        closed_at=lead_data['closed_at'],
-                        change_time_status=lead_data['status_time'],
+                        created_at=lead_data["created_at"],
+                        updated_at=lead_data["updated_at"],
+                        closed_at=lead_data["closed_at"],
+                        change_time_status=lead_data["status_time"],
                     )
+                    if lead_obj.closed_at and lead_obj.created_at:
+                        lead_obj.lead_active_time = lead_obj.calculate_status_duration(lead_obj.created_at,
+                                                                                       lead_obj.closed_at)
                     new_leads.append(lead_obj)
             except Exception as e:
                 print(f"Error processing lead {lead_data['id']}: {e}")
 
         if leads_data:
             print("Processing leads...")
-            # Running all the tasks concurrently with asyncio.gather
+            # Process all leads concurrently
             await asyncio.gather(*[process_lead(lead_data) for lead_data in leads_data])
         else:
             print("No leads to process.")
@@ -716,6 +716,59 @@ class Save_model(LeadProcessor):
             ])
             print(f"Total leads updated: {len(updated_leads)}")
 
+    def savehistory(self, lead_data, lead_obj):
+        # Extract necessary information
+        new_status = str(lead_data.get("status_id"))
+        new_pipeline = str(lead_data.get("pipeline_id"))
+        new_status_time = str(lead_data.get("status_time"))
+
+        old_status = lead_obj.status
+        old_pipeline = lead_obj.pipeline
+        old_status_time = lead_obj.change_time_status
+
+
+        if old_status.status_id != new_status or old_pipeline.pipeline_id != new_pipeline:
+            print(f"Changes detected for lead {lead_obj.lead_id} <> {old_status.status_id}!={new_status}")
+            print(old_status_time, new_status_time)
+
+            # Calculate total time spent in the old status
+            duration = lead_obj.calculate_status_duration(old_status_time, new_status_time)
+            print("Duration:", duration)
+
+            try:
+                print(f"Old pipe id>>>>>{old_pipeline.pipeline_id}, old status>>>> {old_status.status_id} "
+                      f"New pipe id>>>>>{new_pipeline}, new status>>>> {new_status}")
+
+                # Ensure foreign keys exist before creating history
+                old_pipeline_obj = Pipeline.objects.get(pipeline_id=old_pipeline.pipeline_id)
+                new_pipeline_obj = Pipeline.objects.get(pipeline_id=new_pipeline)
+
+                # Fetch the status objects based on pipeline and status_id
+                old_status_obj = Status.objects.get(pipeline=old_pipeline_obj, status_id=old_status.status_id)
+                print("Old status obj:", old_status_obj)
+
+                new_status_obj = Status.objects.get(pipeline=new_pipeline_obj, status_id=new_status)
+
+                # Save a new Lead_history record
+                history = Lead_history(
+                    lead_id=lead_obj,
+                    old_status=old_status_obj,  # Pass only the ID
+                    old_status_time=old_status_time,
+                    new_status_id=new_status_obj.id,  # Pass only the ID
+                    new_status_time=new_status_time,
+                    total_time_status=duration,
+                    old_pipeline=old_pipeline_obj,
+                    new_pipeline_id=new_pipeline_obj.id,
+                )
+                history.save()
+            except Status.DoesNotExist:
+                print(f"Status {old_status.status_id} or {new_status} not found.")
+            except Pipeline.DoesNotExist:
+                print(f"Pipeline {old_pipeline.pipeline_id} or {new_pipeline} not found.")
+            except Exception as e:
+                print(f"Error saving Lead_history: {e}")
+        else:
+            print(f"No changes detected for lead {lead_obj.lead_id}")
 
     async def async_bulk_create(self, objects, batch_size=100):
         for i in range(0, len(objects), batch_size):
@@ -732,12 +785,20 @@ class Save_model(LeadProcessor):
         data = await super().process_leads(file)
         await self.save_leads_to_model(data)
         print("Total time:",time.time()-start_time)
-def main():
-    # model1=LeadProcessor()
-    # asyncio.run(model1.get_all_data())
-    model = Save_model()
-    model.save_users()
-    model.save_pipelines_statuses()
-    asyncio.run(model.save_leads())
 
+def main():
+    while True:
+        start_time = time.time()
+        print(f"Main Start Time: {datetime.fromtimestamp(start_time).strftime('%Y-%m-%d %H:%M:%S')}")
+        asyncio.run(problems(f"```Overall Start Time: {datetime.fromtimestamp(start_time).strftime('%Y-%m-%d %H:%M:%S')}```"))
+        # model1=LeadProcessor()
+        # asyncio.run(model1.get_all_data())
+        model = Save_model()
+        model.save_users()
+        model.save_pipelines_statuses()
+        asyncio.run(model.save_leads())
+        end_time = time.time()
+        print(f"Main End Time: {datetime.fromtimestamp(end_time).strftime('%Y-%m-%d %H:%M:%S')}||Total time taken:{end_time-start_time:.2f} seconds")
+        asyncio.run(problems(f"```End Time: {datetime.fromtimestamp(end_time).strftime('%Y-%m-%d %H:%M:%S')}||Total time taken: {end_time-start_time:.2f} seconds```"))
+        time.sleep(60)
 main()
