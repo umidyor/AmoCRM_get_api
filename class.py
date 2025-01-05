@@ -94,7 +94,7 @@ class LeadProcessor:
                         return True
                     else:
                         print(f"Failed to refresh token: {response.status}, {await response.text()}")
-                        asyncio.run(problems("The refresh token is invalid, expired, or revoked. Please re-authenticate.Or please click /tokens.You have 10 minutes"))
+                        await problems("The refresh token is invalid, expired, or revoked. Please re-authenticate.Or please click /tokens.You have 10 minutes")
                         await asyncio.sleep(600)
                         await self.get_tokens()
                         return False
@@ -702,12 +702,12 @@ class Save_model(LeadProcessor):
         else:
             print("No leads to process.")
 
-        print(f"Total new leads: {len(new_leads)}")
-        print(f"Total updated leads: {len(updated_leads)}")
+
 
         if new_leads:
             await self.async_bulk_create(new_leads)
             print(f"Total leads created: {len(new_leads)}")
+            await problems(f"Total leads created: {len(new_leads)}")
 
         if updated_leads:
             await self.async_bulk_update(updated_leads, fields=[
@@ -715,7 +715,7 @@ class Save_model(LeadProcessor):
                 "updated_at", "closed_at", "change_time_status"
             ])
             print(f"Total leads updated: {len(updated_leads)}")
-
+            await problems(f"Total leads updated: {len(updated_leads)}")
     def savehistory(self, lead_data, lead_obj):
         # Extract necessary information
         new_status = str(lead_data.get("status_id"))
@@ -790,15 +790,23 @@ def main():
     while True:
         start_time = time.time()
         print(f"Main Start Time: {datetime.fromtimestamp(start_time).strftime('%Y-%m-%d %H:%M:%S')}")
-        asyncio.run(problems(f"```Overall Start Time: {datetime.fromtimestamp(start_time).strftime('%Y-%m-%d %H:%M:%S')}```"))
-        # model1=LeadProcessor()
-        # asyncio.run(model1.get_all_data())
-        model = Save_model()
-        model.save_users()
-        model.save_pipelines_statuses()
-        asyncio.run(model.save_leads())
-        end_time = time.time()
-        print(f"Main End Time: {datetime.fromtimestamp(end_time).strftime('%Y-%m-%d %H:%M:%S')}||Total time taken:{end_time-start_time:.2f} seconds")
-        asyncio.run(problems(f"```End Time: {datetime.fromtimestamp(end_time).strftime('%Y-%m-%d %H:%M:%S')}||Total time taken: {end_time-start_time:.2f} seconds```"))
-        time.sleep(60)
-main()
+        asyncio.run(problems(f"```Overall-Start-Time:\n{datetime.fromtimestamp(start_time).strftime('%Y-%m-%d %H:%M:%S')}```"))
+        try:
+            model1=LeadProcessor()
+            asyncio.run(model1.get_all_data())
+            model = Save_model()
+            model.save_users()
+            model.save_pipelines_statuses()
+            asyncio.run(model.save_leads())
+            end_time = time.time()
+            print(f"Main End Time: {datetime.fromtimestamp(end_time).strftime('%Y-%m-%d %H:%M:%S')}||Total time taken:{end_time-start_time:.2f} seconds")
+            asyncio.run(problems(f"```End-time:\n{datetime.fromtimestamp(end_time).strftime('%Y-%m-%d %H:%M:%S')}```"))
+            asyncio.run(problems( f"```Total-time-taken:\n{end_time - start_time:.2f} seconds```"))
+
+            time.sleep(60)
+        except Exception as e:
+            print(f"Problem: {e}")
+            asyncio.run(problems(f"Problem: {e}"))
+            time.sleep(60)
+if __name__=="__main__":
+    main()
