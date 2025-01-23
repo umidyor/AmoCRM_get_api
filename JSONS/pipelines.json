@@ -1,6 +1,6 @@
 [
     {
-        "_total_items": 11,
+        "_total_items": 12,
         "_links": {
             "self": {
                 "href": "https://pixeltechuz.amocrm.ru/api/v4/leads/pipelines?page=1"
@@ -297,9 +297,24 @@
                                 }
                             },
                             {
+                                "id": 73390958,
+                                "name": "Kutuvda1",
+                                "sort": 50,
+                                "is_editable": true,
+                                "pipeline_id": 5541622,
+                                "color": "#99ccff",
+                                "type": 0,
+                                "account_id": 30251998,
+                                "_links": {
+                                    "self": {
+                                        "href": "https://pixeltechuz.amocrm.ru/api/v4/leads/pipelines/5541622/statuses/73390958"
+                                    }
+                                }
+                            },
+                            {
                                 "id": 48968971,
                                 "name": "Uchrashuv belgilandi",
-                                "sort": 50,
+                                "sort": 60,
                                 "is_editable": true,
                                 "pipeline_id": 5541622,
                                 "color": "#ffcccc",
@@ -314,7 +329,7 @@
                             {
                                 "id": 69710366,
                                 "name": "Auditda",
-                                "sort": 60,
+                                "sort": 70,
                                 "is_editable": true,
                                 "pipeline_id": 5541622,
                                 "color": "#deff81",
@@ -329,7 +344,7 @@
                             {
                                 "id": 63081786,
                                 "name": "Kutuvda",
-                                "sort": 70,
+                                "sort": 80,
                                 "is_editable": true,
                                 "pipeline_id": 5541622,
                                 "color": "#99ccff",
@@ -1565,6 +1580,114 @@
                                 "_links": {
                                     "self": {
                                         "href": "https://pixeltechuz.amocrm.ru/api/v4/leads/pipelines/8704670/statuses/143"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 9117746,
+                    "name": "Ychatter",
+                    "sort": 12,
+                    "is_main": false,
+                    "is_unsorted_on": true,
+                    "is_archive": false,
+                    "account_id": 30251998,
+                    "_links": {
+                        "self": {
+                            "href": "https://pixeltechuz.amocrm.ru/api/v4/leads/pipelines/9117746"
+                        }
+                    },
+                    "_embedded": {
+                        "statuses": [
+                            {
+                                "id": 73330998,
+                                "name": "\u041d\u0435\u0440\u0430\u0437\u043e\u0431\u0440\u0430\u043d\u043d\u043e\u0435",
+                                "sort": 10,
+                                "is_editable": false,
+                                "pipeline_id": 9117746,
+                                "color": "#c1c1c1",
+                                "type": 1,
+                                "account_id": 30251998,
+                                "_links": {
+                                    "self": {
+                                        "href": "https://pixeltechuz.amocrm.ru/api/v4/leads/pipelines/9117746/statuses/73330998"
+                                    }
+                                }
+                            },
+                            {
+                                "id": 73331002,
+                                "name": "\u041f\u0435\u0440\u0432\u0438\u0447\u043d\u044b\u0439 \u043a\u043e\u043d\u0442\u0430\u043a\u0442",
+                                "sort": 20,
+                                "is_editable": true,
+                                "pipeline_id": 9117746,
+                                "color": "#99ccff",
+                                "type": 0,
+                                "account_id": 30251998,
+                                "_links": {
+                                    "self": {
+                                        "href": "https://pixeltechuz.amocrm.ru/api/v4/leads/pipelines/9117746/statuses/73331002"
+                                    }
+                                }
+                            },
+                            {
+                                "id": 73331006,
+                                "name": "\u041f\u0435\u0440\u0435\u0433\u043e\u0432\u043e\u0440\u044b",
+                                "sort": 30,
+                                "is_editable": true,
+                                "pipeline_id": 9117746,
+                                "color": "#ffff99",
+                                "type": 0,
+                                "account_id": 30251998,
+                                "_links": {
+                                    "self": {
+                                        "href": "https://pixeltechuz.amocrm.ru/api/v4/leads/pipelines/9117746/statuses/73331006"
+                                    }
+                                }
+                            },
+                            {
+                                "id": 73331010,
+                                "name": "\u041f\u0440\u0438\u043d\u0438\u043c\u0430\u044e\u0442 \u0440\u0435\u0448\u0435\u043d\u0438\u0435",
+                                "sort": 40,
+                                "is_editable": true,
+                                "pipeline_id": 9117746,
+                                "color": "#ffcc66",
+                                "type": 0,
+                                "account_id": 30251998,
+                                "_links": {
+                                    "self": {
+                                        "href": "https://pixeltechuz.amocrm.ru/api/v4/leads/pipelines/9117746/statuses/73331010"
+                                    }
+                                }
+                            },
+                            {
+                                "id": 142,
+                                "name": "\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0440\u0435\u0430\u043b\u0438\u0437\u043e\u0432\u0430\u043d\u043e",
+                                "sort": 10000,
+                                "is_editable": false,
+                                "pipeline_id": 9117746,
+                                "color": "#CCFF66",
+                                "type": 0,
+                                "account_id": 30251998,
+                                "_links": {
+                                    "self": {
+                                        "href": "https://pixeltechuz.amocrm.ru/api/v4/leads/pipelines/9117746/statuses/142"
+                                    }
+                                }
+                            },
+                            {
+                                "id": 143,
+                                "name": "\u0417\u0430\u043a\u0440\u044b\u0442\u043e \u0438 \u043d\u0435 \u0440\u0435\u0430\u043b\u0438\u0437\u043e\u0432\u0430\u043d\u043e",
+                                "sort": 11000,
+                                "is_editable": false,
+                                "pipeline_id": 9117746,
+                                "color": "#D5D8DB",
+                                "type": 0,
+                                "account_id": 30251998,
+                                "_links": {
+                                    "self": {
+                                        "href": "https://pixeltechuz.amocrm.ru/api/v4/leads/pipelines/9117746/statuses/143"
                                     }
                                 }
                             }

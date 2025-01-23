@@ -1484,85 +1484,35 @@
                             "view": "A",
                             "edit": "A",
                             "add": "A",
-                            "delete": "D",
-                            "export": "D"
+                            "delete": "A",
+                            "export": "A"
                         },
                         "contacts": {
                             "view": "A",
                             "edit": "A",
                             "add": "A",
-                            "delete": "D",
-                            "export": "D"
+                            "delete": "A",
+                            "export": "A"
                         },
                         "companies": {
                             "view": "A",
                             "edit": "A",
                             "add": "A",
-                            "delete": "D",
-                            "export": "D"
+                            "delete": "A",
+                            "export": "A"
                         },
                         "tasks": {
                             "edit": "A",
                             "delete": "A"
                         },
-                        "mail_access": false,
-                        "catalog_access": false,
-                        "files_access": false,
+                        "mail_access": true,
+                        "catalog_access": true,
+                        "files_access": true,
                         "status_rights": [
                             {
                                 "entity_type": "leads",
                                 "pipeline_id": 5541622,
                                 "status_id": 48968959,
-                                "rights": {
-                                    "view": "A",
-                                    "edit": "A",
-                                    "delete": "A"
-                                }
-                            },
-                            {
-                                "entity_type": "leads",
-                                "pipeline_id": 5641315,
-                                "status_id": 49693018,
-                                "rights": {
-                                    "view": "A",
-                                    "edit": "A",
-                                    "delete": "A"
-                                }
-                            },
-                            {
-                                "entity_type": "leads",
-                                "pipeline_id": 7425546,
-                                "status_id": 61682586,
-                                "rights": {
-                                    "view": "A",
-                                    "edit": "A",
-                                    "delete": "A"
-                                }
-                            },
-                            {
-                                "entity_type": "leads",
-                                "pipeline_id": 7900102,
-                                "status_id": 64946914,
-                                "rights": {
-                                    "view": "A",
-                                    "edit": "A",
-                                    "delete": "A"
-                                }
-                            },
-                            {
-                                "entity_type": "leads",
-                                "pipeline_id": 8223186,
-                                "status_id": 67157578,
-                                "rights": {
-                                    "view": "A",
-                                    "edit": "A",
-                                    "delete": "A"
-                                }
-                            },
-                            {
-                                "entity_type": "leads",
-                                "pipeline_id": 8421702,
-                                "status_id": 68539738,
                                 "rights": {
                                     "view": "A",
                                     "edit": "A",
@@ -1581,8 +1531,8 @@
                             },
                             {
                                 "entity_type": "leads",
-                                "pipeline_id": 8623190,
-                                "status_id": 69940746,
+                                "pipeline_id": 8223186,
+                                "status_id": 67157578,
                                 "rights": {
                                     "view": "A",
                                     "edit": "A",
@@ -1591,8 +1541,8 @@
                             },
                             {
                                 "entity_type": "leads",
-                                "pipeline_id": 8687698,
-                                "status_id": 70393406,
+                                "pipeline_id": 8704670,
+                                "status_id": 70511214,
                                 "rights": {
                                     "view": "A",
                                     "edit": "A",
@@ -1611,8 +1561,58 @@
                             },
                             {
                                 "entity_type": "leads",
-                                "pipeline_id": 8704670,
-                                "status_id": 70511214,
+                                "pipeline_id": 8421702,
+                                "status_id": 68539738,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 5641315,
+                                "status_id": 49693018,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8687698,
+                                "status_id": 70393406,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7900102,
+                                "status_id": 64946914,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 8623190,
+                                "status_id": 69940746,
+                                "rights": {
+                                    "view": "A",
+                                    "edit": "A",
+                                    "delete": "A"
+                                }
+                            },
+                            {
+                                "entity_type": "leads",
+                                "pipeline_id": 7425546,
+                                "status_id": 61682586,
                                 "rights": {
                                     "view": "A",
                                     "edit": "A",
@@ -1653,9 +1653,9 @@
                             }
                         ],
                         "custom_fields_rights": null,
-                        "oper_day_reports_view_access": false,
+                        "oper_day_reports_view_access": true,
                         "oper_day_user_tracking": false,
-                        "is_admin": false,
+                        "is_admin": true,
                         "is_free": false,
                         "is_active": true,
                         "group_id": null,

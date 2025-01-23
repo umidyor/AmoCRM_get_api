@@ -342,7 +342,7 @@ class LeadProcessor:
                 "group_id": index.get("group_id"),
                 "pipeline_id": index.get("pipeline_id"),
                 "status_id": status_name,
-                'status_time':lead_status_time,
+                'status_time':self.convert_time(index.get("updated_at")),
                 "updated_by": index.get("updated_by"),
                 "created_at": self.convert_time(index.get("created_at")),
                 "updated_at": self.convert_time(index.get("updated_at")),
@@ -360,7 +360,7 @@ class LeadProcessor:
         # df.to_csv("Leads.csv", sep="|")
 
     def convert_time(self, timestamp):
-        return datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S') if timestamp else None
+        return datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S') if timestamp else datetime.fromtimestamp(946688461).strftime('%Y-%m-%d %H:%M:%S')
 
     async def get_all_leads(self):
         with open("JSONS/leads.json", "r") as file:
@@ -807,6 +807,6 @@ def main():
         except Exception as e:
             print(f"Problem: {e}")
             asyncio.run(problems(f"Problem: {e}"))
-            time.sleep(60)
+            time.sleep(300)
 if __name__=="__main__":
     main()

@@ -24,26 +24,27 @@ class Pipeline(models.Model):
     pipeline_name = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.pipeline_name
+    	return str(self.id)
 
 class Status(models.Model):
     pipeline=models.ForeignKey(Pipeline,on_delete=models.CASCADE,null=True)
     status_id=models.CharField(max_length=255)
     status_name = models.CharField(max_length=255)
     def __str__(self):
-        return self.status_name
+        return str(self.id)
 class UniqueStatus(models.Model):
     status_id=models.CharField(max_length=255)
     status_name=models.CharField(max_length=255)
     def __str__(self):
-        return self.status_name
+        return str(self.id)
 
 class Crm_users(models.Model):
     user_id=models.CharField(max_length=255)
     name=models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return str(self.id)
+
 class Lead(models.Model):
     lead_id=models.CharField(max_length=255)
     name = models.CharField(max_length=255)
@@ -58,7 +59,7 @@ class Lead(models.Model):
     lead_active_time=models.CharField(max_length=255)
     change_time_status=models.DateTimeField(default=datetime(1111, 1, 1, 00, 00, 0),null=True, blank=True)
     def __str__(self):
-        return self.lead_id
+        return str(self.id)
 
     def calculate_status_duration(self, old_status_time, new_status_time):
         if old_status_time and new_status_time:

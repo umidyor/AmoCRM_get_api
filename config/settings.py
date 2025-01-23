@@ -1,3 +1,4 @@
+
 """
 Django settings for config project.
 
@@ -25,11 +26,11 @@ SECRET_KEY = 'django-insecure-35zb5+pq^#_$7nw%_29*%xoo-h^c9m$qxlofo8x1!*%4h@5^3u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['144.126.157.79','*']
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://0bf8-188-113-231-25.ngrok-free.app'
-]
+#CSRF_TRUSTED_ORIGINS = [
+ #   'https://0bf8-188-113-231-25.ngrok-free.app'
+#]
 # Application definition
 
 INSTALLED_APPS = [
@@ -76,22 +77,22 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+#DATABASES = {
+    #'default': {
+   #     'ENGINE': 'django.db.backends.sqlite3',
+  #      'NAME': BASE_DIR / 'db.sqlite3',
+ #   }
+#}
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+	'default': {
+	 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': 'amocrm_db',  # Replace with your database name
+         'USER': 'postgres',  # Replace with your PostgreSQL username
+         'PASSWORD': '2004postgres',  # Replace with your password
+         'HOST': '144.126.157.79',  # Or the host where PostgreSQL is running
+         'PORT': '5432',  # Default PostgreSQL port
     }
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'amocrm_db',  # Replace with your database name
-#         'USER': 'umidyor',  # Replace with your PostgreSQL username
-#         'PASSWORD': '2004postgres',  # Replace with your password
-#         'HOST': '144.126.157.79',  # Or the host where PostgreSQL is running
-#         'PORT': '5432',  # Default PostgreSQL port
-#     }
-# }
 
 
 
