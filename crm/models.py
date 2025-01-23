@@ -24,7 +24,7 @@ class Pipeline(models.Model):
     pipeline_name = models.CharField(max_length=255)
 
     def __str__(self):
-    	return str(self.id)
+        return str(self.id)
 
 class Status(models.Model):
     pipeline=models.ForeignKey(Pipeline,on_delete=models.CASCADE,null=True)
@@ -49,7 +49,10 @@ class Lead(models.Model):
     lead_id=models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     price = models.IntegerField()
-    responsible_user = models.ForeignKey(Crm_users,on_delete=models.SET_NULL,null=True)
+    group=models.CharField(max_length=100)
+    responsible_user = models.ForeignKey(Crm_users,on_delete=models.SET_NULL,null=True, related_name='responsible_user')
+    created_by=models.ForeignKey(Crm_users,on_delete=models.SET_NULL,null=True,related_name='created_by')
+    updated_by=models.ForeignKey(Crm_users,on_delete=models.SET_NULL,null=True,related_name='updated_by')
     pipeline = models.ForeignKey(Pipeline, on_delete=models.CASCADE)
     status = models.ForeignKey(Status, on_delete=models.CASCADE)
     is_deleted = models.BooleanField(default=False)
@@ -92,6 +95,8 @@ class Lead_history(models.Model):
     total_time_status=models.CharField(max_length=500)
     old_pipeline = models.ForeignKey(Pipeline, on_delete=models.CASCADE, related_name='old_pipeline')
     new_pipeline = models.ForeignKey(Pipeline, on_delete=models.CASCADE, related_name='new_pipeline')
+    old_updated_by=models.ForeignKey(Crm_users,on_delete=models.SET_NULL,null=True,related_name='old_updated_by')
+    new_updated_by=models.ForeignKey(Crm_users,on_delete=models.SET_NULL,null=True,related_name='new_updated_by')
 
     def __str__(self):
         return f"History for {self.lead_id.lead_id} from {self.old_status} to {self.new_status}"

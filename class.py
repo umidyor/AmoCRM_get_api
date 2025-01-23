@@ -95,7 +95,7 @@ class LeadProcessor:
                     else:
                         print(f"Failed to refresh token: {response.status}, {await response.text()}")
                         await problems("The refresh token is invalid, expired, or revoked. Please re-authenticate.Or please click /tokens.You have 10 minutes")
-                        await asyncio.sleep(600)
+                        await asyncio.sleep(2)
                         await self.get_tokens()
                         return False
 
@@ -235,7 +235,7 @@ class LeadProcessor:
         with open(f"JSONS/{filename}.json", "w") as file:
             async with aiohttp.ClientSession() as session:
                 # Step 1: Fetch the first page
-                first_page_url = f"https://pixeltechuz.amocrm.ru/api/v4/{endpoint}?page=1"
+                first_page_url = f"https://{AMOCRM_SUBDOMAIN}.amocrm.ru/api/v4/{endpoint}?page=1"
                 first_response = await self.fetch(session, first_page_url)
 
                 if not first_response:
@@ -248,7 +248,7 @@ class LeadProcessor:
                     # Step 2: Perform binary search to determine the last page
                     total_pages = 5  # Start with an estimate
                     while True:
-                        next_url = f"https://pixeltechuz.amocrm.ru/api/v4/{endpoint}?page={total_pages * 2}"
+                        next_url = f"https://{AMOCRM_SUBDOMAIN}.amocrm.ru/api/v4/{endpoint}?page={total_pages * 2}"
                         next_response = await self.fetch(session, next_url)
                         if next_response and "next" in next_response.get("_links", {}):
                             total_pages *= 2
@@ -259,7 +259,7 @@ class LeadProcessor:
                     low, high = total_pages // 2, total_pages
                     while low < high:
                         mid = (low + high + 1) // 2
-                        test_url = f"https://pixeltechuz.amocrm.ru/api/v4/{endpoint}?page={mid}"
+                        test_url = f"https://{AMOCRM_SUBDOMAIN}.amocrm.ru/api/v4/{endpoint}?page={mid}"
                         test_response = await self.fetch(session, test_url)
                         if test_response and "next" in test_response.get("_links", {}):
                             low = mid
@@ -269,7 +269,7 @@ class LeadProcessor:
                     # Step 4: Sequentially verify additional pages
                     last_page = low
                     while True:
-                        test_url = f"https://pixeltechuz.amocrm.ru/api/v4/{endpoint}?page={last_page + 1}"
+                        test_url = f"https://{AMOCRM_SUBDOMAIN}.amocrm.ru/api/v4/{endpoint}?page={last_page + 1}"
                         test_response = await self.fetch(session, test_url)
                         if test_response:
                             last_page += 1
@@ -282,7 +282,7 @@ class LeadProcessor:
                 print(f"Total number of pages for {endpoint}: {last_page}")
 
                 # Step 5: Fetch all pages concurrently (if multiple pages exist)
-                all_page_urls = [f"https://pixeltechuz.amocrm.ru/api/v4/{endpoint}?page={i}" for i in
+                all_page_urls = [f"https://{AMOCRM_SUBDOMAIN}.amocrm.ru/api/v4/{endpoint}?page={i}" for i in
                                  range(2, last_page + 1)]
                 responses = await asyncio.gather(*(self.fetch(session, url) for url in all_page_urls))
 
@@ -343,6 +343,7 @@ class LeadProcessor:
                 "pipeline_id": index.get("pipeline_id"),
                 "status_id": status_name,
                 'status_time':self.convert_time(index.get("updated_at")),
+                "created_by":index.get("created_by"),
                 "updated_by": index.get("updated_by"),
                 "created_at": self.convert_time(index.get("created_at")),
                 "updated_at": self.convert_time(index.get("updated_at")),
@@ -645,6 +646,14 @@ class Save_model(LeadProcessor):
             try:
                 print(f"Processing Lead: {lead_data['id']}")  # Debugging log
                 responsible_user = await sync_to_async(Crm_users.objects.get)(user_id=lead_data["responsible_user_id"])
+                if lead_data["created_by"]!=0:
+                    created_by = await sync_to_async(Crm_users.objects.get)(user_id=lead_data["created_by"])
+                else:
+                    created_by=None
+                if lead_data["updated_by"] != 0:
+                    updated_by = await sync_to_async(Crm_users.objects.get)(user_id=lead_data["updated_by"])
+                else:
+                    updated_by=None
                 pipeline = await sync_to_async(Pipeline.objects.get)(pipeline_id=lead_data["pipeline_id"])
                 status = await sync_to_async(Status.objects.get)(pipeline=pipeline, status_id=lead_data["status_id"])
 
@@ -658,14 +667,17 @@ class Save_model(LeadProcessor):
                         # Update lead object fields
                         lead_obj.name = lead_data["name"]
                         lead_obj.price = lead_data["price"] or 0
+                        lead_obj.group=lead_data['group_id']
                         lead_obj.responsible_user = responsible_user
+                        lead_obj.created_by=created_by
+                        lead_obj.updated_by=updated_by
                         lead_obj.pipeline = pipeline
                         lead_obj.status = status
                         lead_obj.is_deleted = lead_data["is_deleted"]
                         lead_obj.updated_at = lead_data["updated_at"]
                         lead_obj.closed_at = lead_data["closed_at"]
                         lead_obj.change_time_status = lead_data["status_time"]
-                        if lead_data["closed_at"]:
+                        if lead_data["closed_at"]!='2000-01-01 06:01:01':
                             lead_obj.lead_active_time = lead_obj.calculate_status_duration(lead_obj.created_at,lead_obj.closed_at)
                             print("Active time", lead_obj.calculate_status_duration(lead_obj.created_at,lead_obj.closed_at))
 
@@ -679,7 +691,10 @@ class Save_model(LeadProcessor):
                         lead_id=lead_id,
                         name=lead_data["name"],
                         price=lead_data["price"] or 0,
+                        group=lead_data["group_id"],
                         responsible_user=responsible_user,
+                        created_by=created_by,
+                        updated_by=updated_by,
                         pipeline=pipeline,
                         status=status,
                         is_deleted=lead_data["is_deleted"],
@@ -688,7 +703,7 @@ class Save_model(LeadProcessor):
                         closed_at=lead_data["closed_at"],
                         change_time_status=lead_data["status_time"],
                     )
-                    if lead_obj.closed_at and lead_obj.created_at:
+                    if lead_obj.closed_at!='2000-01-01 06:01:01' and lead_obj.created_at:
                         lead_obj.lead_active_time = lead_obj.calculate_status_duration(lead_obj.created_at,
                                                                                        lead_obj.closed_at)
                     new_leads.append(lead_obj)
@@ -721,11 +736,12 @@ class Save_model(LeadProcessor):
         new_status = str(lead_data.get("status_id"))
         new_pipeline = str(lead_data.get("pipeline_id"))
         new_status_time = str(lead_data.get("status_time"))
+        new_updated_by=str(lead_data.get("updated_by"))
 
         old_status = lead_obj.status
         old_pipeline = lead_obj.pipeline
         old_status_time = lead_obj.change_time_status
-
+        old_updated_by=lead_obj.updated_by
 
         if old_status.status_id != new_status or old_pipeline.pipeline_id != new_pipeline:
             print(f"Changes detected for lead {lead_obj.lead_id} <> {old_status.status_id}!={new_status}")
@@ -749,6 +765,9 @@ class Save_model(LeadProcessor):
 
                 new_status_obj = Status.objects.get(pipeline=new_pipeline_obj, status_id=new_status)
 
+                old_updated_by=Crm_users.objects.get(user_id=old_updated_by.user_id)
+                new_updated_by=Crm_users.objects.get(user_id=new_updated_by)
+
                 # Save a new Lead_history record
                 history = Lead_history(
                     lead_id=lead_obj,
@@ -759,6 +778,8 @@ class Save_model(LeadProcessor):
                     total_time_status=duration,
                     old_pipeline=old_pipeline_obj,
                     new_pipeline_id=new_pipeline_obj.id,
+                    old_updated_by=old_updated_by,
+                    new_updated_by=new_updated_by
                 )
                 history.save()
             except Status.DoesNotExist:
@@ -807,6 +828,6 @@ def main():
         except Exception as e:
             print(f"Problem: {e}")
             asyncio.run(problems(f"Problem: {e}"))
-            time.sleep(300)
+            time.sleep(2)
 if __name__=="__main__":
     main()

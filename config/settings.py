@@ -1,4 +1,3 @@
-
 """
 Django settings for config project.
 
@@ -16,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -26,11 +24,11 @@ SECRET_KEY = 'django-insecure-35zb5+pq^#_$7nw%_29*%xoo-h^c9m$qxlofo8x1!*%4h@5^3u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['144.126.157.79','*']
+ALLOWED_HOSTS = ['144.126.157.79', '*']
 
-#CSRF_TRUSTED_ORIGINS = [
- #   'https://0bf8-188-113-231-25.ngrok-free.app'
-#]
+# CSRF_TRUSTED_ORIGINS = [
+#   'https://0bf8-188-113-231-25.ngrok-free.app'
+# ]
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,6 +53,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 import os
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -73,28 +72,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-#DATABASES = {
-    #'default': {
-   #     'ENGINE': 'django.db.backends.sqlite3',
-  #      'NAME': BASE_DIR / 'db.sqlite3',
- #   }
-#}
 DATABASES = {
-	'default': {
-	 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'amocrm_db',  # Replace with your database name
-         'USER': 'postgres',  # Replace with your PostgreSQL username
-         'PASSWORD': '2004postgres',  # Replace with your password
-         'HOST': '144.126.157.79',  # Or the host where PostgreSQL is running
-         'PORT': '5432',  # Default PostgreSQL port
-    }
+'default': {
+    'ENGINE': 'django.db.backends.sqlite3',
+     'NAME': BASE_DIR / 'db.sqlite3',
+  }
 }
-
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'amocrm_db',  # Replace with your database name
+#         'USER': 'postgres',  # Replace with your PostgreSQL username
+#         'PASSWORD': '2004postgres',  # Replace with your password
+#         'HOST': '144.126.157.79',  # Or the host where PostgreSQL is running
+#         'PORT': '5432',  # Default PostgreSQL port
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -114,7 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -125,7 +120,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = False
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/

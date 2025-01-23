@@ -63,6 +63,6 @@ from crm.models import Lead
 # print("Records with last_time_sync not equal to 2024-12-02 09:39:42 have been deleted.")
 
 from datetime import datetime
-s=datetime.fromtimestamp(1704105600)
+s=datetime.fromtimestamp(946688461)
 print(s)
 print(s.isoformat())
