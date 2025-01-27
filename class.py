@@ -299,7 +299,7 @@ class LeadProcessor:
         )
 
 
-    async def status_time(self,lead_id,data):
+    async def status_time_etap(self,lead_id,data):
             for element in data:
                 for index in element['_embedded']['leads']:
                     if index.get('id') == lead_id:  # Check if the lead matches the lead_id
@@ -314,6 +314,55 @@ class LeadProcessor:
                                         value = value_entry.get('value')
                                         if value:
                                             return self.convert_time(value)
+    async def lead_place(self,lead_id,data):
+            for element in data:
+                for index in element['_embedded']['leads']:
+                    if index.get('id') == lead_id:  # Check if the lead matches the lead_id
+                        lead = index  # Assign the actual lead data to `lead`
+                        status = lead.get('custom_fields_values')  # Get the custom fields
+                        if status:  # Check if status is not None
+                            for field in status:
+                                # Check if 'field_id' matches 1155527 and 'values' exists
+                                if field.get('field_id') == 1168539 and 'values' in field:
+                                    for value_entry in field['values']:
+                                        # Extract and store the 'value'
+                                        value = value_entry.get('value')
+                                        if value:
+                                            return value
+
+    async def lead_istochnik(self,lead_id,data):
+            for element in data:
+                for index in element['_embedded']['leads']:
+                    if index.get('id') == lead_id:  # Check if the lead matches the lead_id
+                        lead = index  # Assign the actual lead data to `lead`
+                        status = lead.get('custom_fields_values')  # Get the custom fields
+                        if status:  # Check if status is not None
+                            for field in status:
+                                # Check if 'field_id' matches 1155527 and 'values' exists
+                                if field.get('field_id') == 1168541 and 'values' in field:
+                                    for value_entry in field['values']:
+                                        # Extract and store the 'value'
+                                        value = value_entry.get('value')
+                                        if value:
+                                            return value
+
+    async def etiroz_sababi(self,lead_id,data):
+            for element in data:
+                for index in element['_embedded']['leads']:
+                    if index.get('id') == lead_id:  # Check if the lead matches the lead_id
+                        lead = index  # Assign the actual lead data to `lead`
+                        status = lead.get('custom_fields_values')  # Get the custom fields
+                        if status:  # Check if status is not None
+                            for field in status:
+                                # Check if 'field_id' matches 1155527 and 'values' exists
+                                if field.get('field_id') == 1133717 and 'values' in field:
+                                    for value_entry in field['values']:
+                                        # Extract and store the 'value'
+                                        value = value_entry.get('value')
+                                        if value:
+                                            return value
+
+
     async def process_leads(self, data):
         leads_data = []
 
@@ -332,8 +381,10 @@ class LeadProcessor:
             user_results = await asyncio.gather(*[self.get_user(user_id) for user_id in user_ids])
             pipeline_name = await self.get_pipeline(pipeline_id)
             status_name = await self.get_status(pipeline_id, status_id)
-            lead_status_time = await self.status_time(index.get("id"),data)
-
+            lead_status_time = await self.status_time_etap(index.get("id"),data)
+            lead_place=await self.lead_place(index.get("id"),data)
+            lead_istochnik=await self.lead_istochnik(index.get("id"),data)
+            etiroz_sabai=await self.etiroz_sababi(index.get("id"),data)
             lead = {
                 "id": index.get("id"),
                 "name": index.get("name"),
@@ -349,16 +400,19 @@ class LeadProcessor:
                 "updated_at": self.convert_time(index.get("updated_at")),
                 "closed_at":self.convert_time(index.get("closed_at")),
                 "closest_task_at": self.convert_time(index.get("closest_task_at")),
-                "is_deleted": index.get("is_deleted")
+                "is_deleted": index.get("is_deleted"),
+                "lead_place":lead_place,
+                "lead_istochnik":lead_istochnik,
+                'etiroz_sababi':etiroz_sabai
             }
             leads_data.append(lead)
 
         # Concurrently process all leads
         await asyncio.gather(
             *[fetch_lead_details(index) for element in data for index in element['_embedded']['leads']])
-        return leads_data
         # df = pd.DataFrame(leads_data)
         # df.to_csv("Leads.csv", sep="|")
+        return leads_data
 
     def convert_time(self, timestamp):
         return datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S') if timestamp else datetime.fromtimestamp(946688461).strftime('%Y-%m-%d %H:%M:%S')
@@ -675,6 +729,9 @@ class Save_model(LeadProcessor):
                         lead_obj.status = status
                         lead_obj.is_deleted = lead_data["is_deleted"]
                         lead_obj.updated_at = lead_data["updated_at"]
+                        lead_obj.lead_place=lead_data["lead_place"]
+                        lead_obj.lead_istochnik=lead_data["lead_istochnik"]
+                        lead_obj.etiroz_sababi=lead_data["etiroz_sababi"]
                         lead_obj.closed_at = lead_data["closed_at"]
                         lead_obj.change_time_status = lead_data["status_time"]
                         if lead_data["closed_at"]!='2000-01-01 06:01:01':
@@ -700,6 +757,9 @@ class Save_model(LeadProcessor):
                         is_deleted=lead_data["is_deleted"],
                         created_at=lead_data["created_at"],
                         updated_at=lead_data["updated_at"],
+                        lead_place=lead_data["lead_place"],
+                        lead_istochnik=lead_data["lead_istochnik"],
+                        etiroz_sababi=lead_data["etiroz_sababi"],
                         closed_at=lead_data["closed_at"],
                         change_time_status=lead_data["status_time"],
                     )
